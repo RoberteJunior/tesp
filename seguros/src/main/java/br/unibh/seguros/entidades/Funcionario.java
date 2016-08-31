@@ -2,16 +2,22 @@ package br.unibh.seguros.entidades;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+@Entity
+@PrimaryKeyJoinColumn
 public class Funcionario extends Pessoa {
 	
-	private String setor;
+	private Setor setor;
 	private String perfil;
 	private String login;
 	private String senha;
-	public String getSetor() {
+	
+	public Setor getSetor() {
 		return setor;
 	}
-	public void setSetor(String setor) {
+	public void setSetor(Setor setor) {
 		this.setor = setor;
 	}
 	public String getPerfil() {
@@ -80,7 +86,7 @@ public class Funcionario extends Pessoa {
 	}
 	public Funcionario(Long id, String nome, String sexo, String cpf, String telefoneComercial,
 			String telefoneResidencial, String telefoneCelular, String email, Date dataNascimento, Date dataCadastro,
-			String setor, String perfil, String login, String senha) {
+			Setor setor, String perfil, String login, String senha) {
 		super(id, nome, sexo, cpf, telefoneComercial, telefoneResidencial, telefoneCelular, email, dataNascimento,
 				dataCadastro);
 		this.setor = setor;

@@ -2,13 +2,28 @@ package br.unibh.seguros.entidades;
 
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="hahah")
 public class Setor {
 	
+	@Id
 	private Long id;
+	
 	private String nome;
 	private String sigla;
 	private Setor setorSuperior;
 	private Set<Funcionario> funcionarios;
+	private Long version;
+	
+	public Setor(Long version) {
+		super();
+		this.version = version;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -51,11 +66,7 @@ public class Setor {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((funcionarios == null) ? 0 : funcionarios.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((setorSuperior == null) ? 0 : setorSuperior.hashCode());
-		result = prime * result + ((sigla == null) ? 0 : sigla.hashCode());
+		result = prime * result + ((version == null) ? 0 : version.hashCode());
 		return result;
 	}
 	@Override
@@ -67,32 +78,22 @@ public class Setor {
 		if (getClass() != obj.getClass())
 			return false;
 		Setor other = (Setor) obj;
-		if (funcionarios == null) {
-			if (other.funcionarios != null)
+		if (version == null) {
+			if (other.version != null)
 				return false;
-		} else if (!funcionarios.equals(other.funcionarios))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (setorSuperior == null) {
-			if (other.setorSuperior != null)
-				return false;
-		} else if (!setorSuperior.equals(other.setorSuperior))
-			return false;
-		if (sigla == null) {
-			if (other.sigla != null)
-				return false;
-		} else if (!sigla.equals(other.sigla))
+		} else if (!version.equals(other.version))
 			return false;
 		return true;
+	}
+	public Long getVersion() {
+		return version;
+	}
+	public void setVersion(Long version) {
+		this.version = version;
+	}
+	@Override
+	public String toString() {
+		return "Setor [version=" + version + "]";
 	}
 
 }
