@@ -2,16 +2,20 @@ package br.unibh.seguros.entidades;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Entity
-@PrimaryKeyJoinColumn
+@Table(name="tb_funcionario")
 public class Funcionario extends Pessoa {
 	
 	private Setor setor;
+	@Column(columnDefinition="varchar(30)", nullable=false)
 	private String perfil;
+	@Column(columnDefinition="varchar(15)", nullable=false)
 	private String login;
+	@Column(columnDefinition="varchar(100)", nullable=false)
 	private String senha;
 	
 	public Setor getSetor() {

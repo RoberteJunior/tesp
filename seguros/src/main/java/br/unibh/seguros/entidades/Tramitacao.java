@@ -3,15 +3,34 @@ package br.unibh.seguros.entidades;
 import java.io.File;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
+@Table(name="tb_tramitacao")
 public class Tramitacao {
+	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
+	
 	private Proposta proposta;
+	@Column(name="etapa_processo", nullable=false)
 	private EtapaProcesso EtapaProcesso;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="data_hora", nullable=false)
 	private Date dataHora;
+	@Column(name="tipo_decisao", nullable=false)
 	private TipoDecisao tipoDecisao;
+	
 	private Funcionario usuarioDecisao;
+	@Column(columnDefinition="varchar(4000)",nullable=true)
 	private String comentario;
+	@Column(columnDefinition="blob", nullable=false)
 	private File documento;
+	@Version
 	private Long version;
 
 	public Long getId() {

@@ -2,6 +2,7 @@ package br.unibh.seguros.entidades;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 @Entity @Inheritance(strategy=InheritanceType.JOINED)/*@Entity torna a classe persistente*/
 @Table(name="tb_pessoa")
@@ -32,15 +36,27 @@ public abstract class Pessoa {
 	}
 	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
+	@Column(columnDefinition="varchar(100)", nullable=false)
 	private String nome;
+	@Column(columnDefinition="char(1)", nullable=false)
 	private String sexo;
+	@Column(columnDefinition="char(11)", nullable=false, unique=true)
 	private String cpf;
+	@Column(name="telefone_comercial", columnDefinition="char(14)", nullable=true)
 	private String telefoneComercial;
+	@Column(name="telefone_residencial", columnDefinition="char(14)", nullable=false)
 	private String telefoneResidencial;
+	@Column(name="telefone_celular", columnDefinition="char(14)", nullable=true)
 	private String telefoneCelular;
+	@Column(columnDefinition="varchar(100)", nullable=true)
 	private String email;
+	@Temporal(TemporalType.DATE)
+	@Column(name="data_nascimento", nullable=false)
 	private Date dataNascimento;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="data_cadastro", nullable=false)
 	private Date dataCadastro;
+	@Version
 	private Long version;
 	
 	

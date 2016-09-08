@@ -2,21 +2,41 @@ package br.unibh.seguros.entidades;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+@Table(name="tb_segurado")
 public class Segurado extends Pessoa {
-	
+	@Column(columnDefinition="char(1)", nullable=false)
 	private String classe;
+	@Column(name="numero_rg", columnDefinition="varchar(10)", nullable=false)
 	private String numeroRG;
+	@Column(name="orgao_expedidor_rg", columnDefinition="varchar(50)", nullable=false)
 	private String orgaoExpedidorRG;
+	@Column(name="numero_habilitacao", columnDefinition="varchar(20)", nullable=false)
 	private String numeroHabilitacao;
+	@Column(name="tipo_habilitacao", columnDefinition="char(1)", nullable=false)
 	private String tipoHabilitacao;
+	@Temporal(TemporalType.DATE)
+	@Column(name="data_validade_habilitacao", nullable=false)
 	private Date dataValidadeHabilitacao;
+	@Temporal(TemporalType.DATE)
+	@Column(name="data_primeira_habilitacao", nullable=false)
 	private Date dataPrimeiraHabilitacao;
+	@Column(columnDefinition="varchar(150)", nullable=false)
 	private String logradouro;
+	@Column(columnDefinition="varchar(30)", nullable=false)
 	private String numero;
+	@Column(columnDefinition="varchar(100)", nullable=true)
 	private String complemento;
+	@Column(columnDefinition="char(10)", nullable=false)
 	private String cep;
+	@Column(columnDefinition="varchar(50)", nullable=false)
 	private String bairro;
+	@Column(columnDefinition="varchar(100)", nullable=false)
 	private String cidade;
+	@Column(columnDefinition="char(2)", nullable=false)
 	private String estado;
 	public String getClasse() {
 		return classe;
