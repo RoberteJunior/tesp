@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -17,14 +19,20 @@ public class Setor {
 	
 	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(columnDefinition="varchar(150)", nullable=false)
 	private String nome;
+	
 	@Column(columnDefinition="varchar(10)", nullable=false, unique=true)
 	private String sigla;
-	@Column(name="setor_superior", nullable=true)
+	
+	@OneToOne
+	@JoinColumn(name="setor_superior")
 	private Setor setorSuperior;
-	@OneToMany
+	
+	@OneToMany(mappedBy="setor")
 	private Set<Funcionario> funcionarios;
+	
 	@Version
 	private Long version;
 	
