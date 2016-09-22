@@ -93,6 +93,9 @@ public class Funcionario extends Pessoa {
 			return false;
 		return true;
 	}
+	public Funcionario(){
+		
+	}
 	public Funcionario(Long id, String nome, String sexo, String cpf, String telefoneComercial,
 			String telefoneResidencial, String telefoneCelular, String email, Date dataNascimento, Date dataCadastro,
 			Setor setor, String perfil, String login, String senha) {

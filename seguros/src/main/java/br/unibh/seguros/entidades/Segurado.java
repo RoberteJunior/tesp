@@ -1,6 +1,7 @@
 package br.unibh.seguros.entidades;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -248,6 +249,10 @@ public class Segurado extends Pessoa {
 		} else if (!tipoHabilitacao.equals(other.tipoHabilitacao))
 			return false;
 		return true;
+	}
+	
+	public Segurado(){
+		
 	}
 	public Segurado(Long id, String nome, String sexo, String cpf, String telefoneComercial, String telefoneResidencial,
 			String telefoneCelular, String email, Date dataNascimento, Date dataCadastro, String classe,

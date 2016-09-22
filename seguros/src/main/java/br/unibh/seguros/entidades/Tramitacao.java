@@ -194,6 +194,10 @@ public class Tramitacao {
 			return false;
 		return true;
 	}
+	
+	public Tramitacao(){
+		
+	}
 
 	public Tramitacao(Long id, Proposta proposta, br.unibh.seguros.entidades.EtapaProcesso etapaProcesso, Date dataHora,
 			TipoDecisao tipoDecisao, Funcionario usuarioDecisao, String comentario, File documento, Long version) {

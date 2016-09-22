@@ -12,6 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="tb_setor")
@@ -20,9 +24,15 @@ public class Setor {
 	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotBlank
+	@Size(min = 3, max = 150)
+	@Pattern(regexp = "[A-zÀ-ú .']*", message = "Deve permitir apenas caracteres de A à Z maiúsculos ou minúsculos, com ou sem acentuação, além dos caracteres de espaço, ponto e aspas simples.")
 	@Column(columnDefinition="varchar(150)", nullable=false)
 	private String nome;
 	
+	@NotBlank
+	@Size(min = 2, max = 10)
+	@Pattern(regexp = "[A-Z]", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços.")
 	@Column(columnDefinition="varchar(10)", nullable=false, unique=true)
 	private String sigla;
 	
@@ -48,6 +58,9 @@ public class Setor {
 	}
 	public String getNome() {
 		return nome;
+	}
+	public Setor(){
+		
 	}
 	public Setor(Long id, String nome, String sigla, Setor setorSuperior, Set<Funcionario> funcionarios) {
 		super();

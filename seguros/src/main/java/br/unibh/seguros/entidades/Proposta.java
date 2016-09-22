@@ -309,6 +309,10 @@ public class Proposta {
 			return false;
 		return true;
 	}
+	
+	public Proposta(){
+		
+	}
 	public Proposta(Long id, Date data, String classe, String codigoSusep, BigDecimal valorSegurado,
 			BigDecimal valorFranquia, Date dataInicioVigencia, Date dataTerminoVigencia, int carenciaEmMeses,
 			BigDecimal valorPremio, int diaPagamento, String bancoPagamento, String agencia, String conta,

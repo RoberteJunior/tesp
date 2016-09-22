@@ -235,6 +235,9 @@ public class Questionario {
 			return false;
 		return true;
 	}
+	public Questionario(){
+		
+	}
 	public Questionario(Long id, Boolean seguradoEPrincipal, String nomeCondutor, Boolean resideComPessoa17A25Anos,
 			Boolean possuiGaragemResidencia, Boolean possuiGaragemTrabalho, Boolean possuiGaragemEstudo,
 			Boolean residenciaPropria, Long quilometragemAtual, Boolean utilizaVeiculoAtividadeProfissionais,

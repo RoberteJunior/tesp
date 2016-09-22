@@ -13,6 +13,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity @Inheritance(strategy=InheritanceType.JOINED)/*@Entity torna a classe persistente*/
 @Table(name="tb_pessoa")
@@ -36,26 +41,44 @@ public abstract class Pessoa {
 	}
 	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotBlank
+	@Size(min = 3, max = 100)
+	@Pattern(regexp = "[A-Z]*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços.")
 	@Column(columnDefinition="varchar(100)", nullable=false)
 	private String nome;
+	
+	@NotBlank
+	@Size(min = 2, max = 10)
+	@Pattern(regexp = "(F|M)", message = "Deve conter apenas caracter F ou M.")
 	@Column(columnDefinition="char(1)", nullable=false)
 	private String sexo;
+	
+	@CPF
 	@Column(columnDefinition="char(11)", nullable=false, unique=true)
 	private String cpf;
+	
+	@Pattern(regexp = "\\(\\d{2}\\)")
 	@Column(name="telefone_comercial", columnDefinition="char(14)", nullable=true)
 	private String telefoneComercial;
+	
 	@Column(name="telefone_residencial", columnDefinition="char(14)", nullable=false)
 	private String telefoneResidencial;
+	
 	@Column(name="telefone_celular", columnDefinition="char(14)", nullable=true)
 	private String telefoneCelular;
+	
 	@Column(columnDefinition="varchar(100)", nullable=true)
 	private String email;
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_nascimento", nullable=false)
 	private Date dataNascimento;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="data_cadastro", nullable=false)
 	private Date dataCadastro;
+	
 	@Version
 	private Long version;
 	

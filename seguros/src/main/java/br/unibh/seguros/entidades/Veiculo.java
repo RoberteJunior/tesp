@@ -181,6 +181,9 @@ public class Veiculo {
 			return false;
 		return true;
 	}
+	public Veiculo(){
+		
+	}
 	public Veiculo(Long id, String marca, String descricao, int anoFabricacao, int anoModelo, String placa,
 			String chassi, TipoCombustivel tipoCombustivel, Boolean zeroKm, Boolean veiculoAlienado, Long version) {
 		super();
