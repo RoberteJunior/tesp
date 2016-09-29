@@ -7,20 +7,41 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="tb_segurado")
 public class Segurado extends Pessoa {
 	
+	@NotBlank
+	@NotNull
+	@Pattern(regexp = "[A-Z]*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")
 	@Column(columnDefinition="char(1)", nullable=false)
 	private String classe;
 	
+	
+	@NotBlank
+	@NotNull
+	@Size(max = 10)
+	@Pattern(regexp = "[0-9]*", message = "Deve permitir apenas digitos.")
 	@Column(name="numero_rg", columnDefinition="varchar(10)", nullable=false)
 	private String numeroRG;
 	
+	@NotBlank
+	@NotNull
+	@Size(max = 30)
+	@Pattern(regexp = "[A-Z -/]*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")	
 	@Column(name="orgao_expedidor_rg", columnDefinition="varchar(50)", nullable=false)
 	private String orgaoExpedidorRG;
 	
+	@NotBlank
+	@NotNull
+	@Size(max = 30)
+	@Pattern(regexp = "[0-9]*", message = "Deve permitir apenas digitos.")
 	@Column(name="numero_habilitacao", columnDefinition="varchar(20)", nullable=false)
 	private String numeroHabilitacao;
 	

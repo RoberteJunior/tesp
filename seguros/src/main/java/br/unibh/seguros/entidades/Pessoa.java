@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -58,23 +60,32 @@ public abstract class Pessoa {
 	@Column(columnDefinition="char(11)", nullable=false, unique=true)
 	private String cpf;
 	
-	@Pattern(regexp = "\\(\\d{2}\\)")
+	@Pattern(regexp = "\\(\\d{2}\\)\\d{0,1}\\d{4}-\\d{4}")
 	@Column(name="telefone_comercial", columnDefinition="char(14)", nullable=true)
 	private String telefoneComercial;
 	
+	@NotBlank
+	@Pattern(regexp = "\\(\\d{2}\\)\\d{0,1}\\d{4}-\\d{4}")
 	@Column(name="telefone_residencial", columnDefinition="char(14)", nullable=false)
 	private String telefoneResidencial;
 	
+	@Pattern(regexp = "\\(\\d{2}\\)\\d{0,1}\\d{4}-\\d{4}")
 	@Column(name="telefone_celular", columnDefinition="char(14)", nullable=true)
 	private String telefoneCelular;
 	
+	
+	@Size(max = 100)
+	@Pattern(regexp = ".+@.+\\.[a-z]+")
 	@Column(columnDefinition="varchar(100)", nullable=true)
 	private String email;
 	
+	@Past
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_nascimento", nullable=false)
 	private Date dataNascimento;
 	
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="data_cadastro", nullable=false)
 	private Date dataCadastro;
