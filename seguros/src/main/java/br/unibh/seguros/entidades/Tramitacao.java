@@ -15,6 +15,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="tb_tramitacao")
@@ -26,20 +29,26 @@ public class Tramitacao {
 	@ManyToOne
 	private Proposta proposta;
 	
+	@NotNull
 	@Column(name="etapa_processo", nullable=false)
 	private EtapaProcesso EtapaProcesso;
 	
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="data_hora", nullable=false)
 	private Date dataHora;
 	
+	@NotNull
 	@Column(name="tipo_decisao", nullable=false)
 	private TipoDecisao tipoDecisao;
+	
 	
 	@OneToOne
 	@JoinColumn(name="funcionario_id")
 	private Funcionario usuarioDecisao;
 	
+	@Pattern(regexp="[A-z]*",message="Não deve ter caracteres especiais e espaços")
+	@Size(max=4000)
 	@Column(columnDefinition="varchar(4000)",nullable=true)
 	private String comentario;
 	

@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -38,42 +39,68 @@ public class Segurado extends Pessoa {
 	@Column(name="orgao_expedidor_rg", columnDefinition="varchar(50)", nullable=false)
 	private String orgaoExpedidorRG;
 	
-	@NotBlank
 	@NotNull
 	@Size(max = 30)
 	@Pattern(regexp = "[0-9]*", message = "Deve permitir apenas digitos.")
 	@Column(name="numero_habilitacao", columnDefinition="varchar(20)", nullable=false)
 	private String numeroHabilitacao;
 	
+	@NotBlank
+	@NotNull
+	@Pattern(regexp = "(A|B|C|D|E)", message = "Deve permitir apenas os caracteres A, B, C, D e E.")
 	@Column(name="tipo_habilitacao", columnDefinition="char(1)", nullable=false)
 	private String tipoHabilitacao;
 	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_validade_habilitacao", nullable=false)
 	private Date dataValidadeHabilitacao;
 	
+	@NotNull
+	@Past
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_primeira_habilitacao", nullable=false)
 	private Date dataPrimeiraHabilitacao;
 	
+	
+	@NotNull
+	@NotBlank
+	@Pattern(regexp = "[A-zÀ-ú '.-/]*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")
+	@Size(max = 150)
 	@Column(columnDefinition="varchar(150)", nullable=false)
 	private String logradouro;
 	
+	@NotNull
+	@NotBlank
+	@Pattern(regexp = "[A-zÀ-ú 0-9.-/]*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")
+	@Size(max = 30)
 	@Column(columnDefinition="varchar(30)", nullable=false)
 	private String numero;
 	
+	@NotBlank
+	@Pattern(regexp = "[A-zÀ-ú .-/]*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")
+	@Size(max = 100)
 	@Column(columnDefinition="varchar(100)", nullable=true)
 	private String complemento;
 	
+	@Pattern(regexp = "\\d{2}.\\d{3}-\\d{3}", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")
 	@Column(columnDefinition="char(10)", nullable=false)
 	private String cep;
 	
+	@NotBlank
+	@Pattern(regexp = "[A-zÀ-ú .']*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")
+	@Size(max = 50)
 	@Column(columnDefinition="varchar(50)", nullable=false)
 	private String bairro;
 	
+	@NotBlank
+	@Pattern(regexp = "[A-zÀ-ú .']*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")
+	@Size(max = 100)
 	@Column(columnDefinition="varchar(100)", nullable=false)
 	private String cidade;
 	
+	@NotBlank
+	@Pattern(regexp = "[A-Z]{2}", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")
 	@Column(columnDefinition="char(2)", nullable=false)
 	private String estado;
 	

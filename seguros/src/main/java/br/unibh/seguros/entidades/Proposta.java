@@ -17,6 +17,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="tb_proposta")
@@ -25,45 +31,70 @@ public class Proposta {
 	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable=false)
 	private Date data;
 	
+	@NotBlank
+	@Pattern(regexp = "[A-Z]{1}", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")
 	@Column(columnDefinition="char(1)", nullable=false)
 	private String classe;
 	
+	@NotBlank
+	@Size (max=15)
+	@Pattern(regexp="[A-zÀ-ú ]*",message="Deverá ter apenas Letras e Espaço")
 	@Column(name="codigo_susep", columnDefinition="char(15)", unique=true)
 	private String codigoSusep;
 	
+	@NotNull
+	@DecimalMin("0.01")
 	@Column(name="valor_segurado", columnDefinition="decimal(14,2)", nullable=false)
 	private BigDecimal valorSegurado;
 	
+	@NotNull
+	@DecimalMin("0.01")
 	@Column(name="valor_franquia", columnDefinition="decimal(14,2)", nullable=false)
 	private BigDecimal valorFranquia;
 	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_inicio_vigencia", nullable=false)
 	private Date dataInicioVigencia;
 	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_fim_vigencia", nullable=false)
 	private Date dataTerminoVigencia;
 	
+	@NotNull
 	@Column(name="carencia_em_meses", nullable=false)
 	private int carenciaEmMeses;
 	
+	@NotNull
+	@DecimalMin("0.01")
 	@Column(name="valor_premio", columnDefinition="decimal(14,2)", nullable=false)
 	private BigDecimal valorPremio;
 	
+	@NotNull
 	@Column(name="dia_pagamento", nullable=false)
 	private int diaPagamento;
 	
+	@NotBlank
+	@Pattern(regexp="[A-zÀ-ú ]*",message="Deverá ter apenas Letras e Espaço")
+	@Size(max=50)
 	@Column(name="banco_pagamento", columnDefinition="varchar(50)",nullable=false)
 	private String bancoPagamento;
 	
+	@NotBlank
+	@Pattern(regexp="[A-zÀ-ú ]*",message="Deverá ter apenas Letras e Espaço")
+	@Size(max=15)
 	@Column(columnDefinition="varchar(15)", nullable=false)
 	private String agencia;
 	
+	@NotBlank
+	@Pattern(regexp="[A-zÀ-ú ]*",message="Deverá ter apenas Letras e Espaço")
+	@Size(max=15)
 	@Column(columnDefinition="varchar(15)", nullable=false)
 	private String conta;
 	
