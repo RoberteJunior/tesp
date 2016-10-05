@@ -46,12 +46,11 @@ public abstract class Pessoa {
 	
 	@NotBlank
 	@Size(min = 3, max = 100)
-	@Pattern(regexp = "[A-Z]*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços.")
+	@Pattern(regexp = "[A-zÀ-ú'. ]*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços.")
 	@Column(columnDefinition="varchar(100)", nullable=false)
 	private String nome;
 	
 	@NotBlank
-	@Size(min = 2, max = 10)
 	@Pattern(regexp = "(F|M)", message = "Deve conter apenas caracter F ou M.")
 	@Column(columnDefinition="char(1)", nullable=false)
 	private String sexo;

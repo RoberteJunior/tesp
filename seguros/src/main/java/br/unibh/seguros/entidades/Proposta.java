@@ -43,7 +43,7 @@ public class Proposta {
 	
 	@NotBlank
 	@Size (max=15)
-	@Pattern(regexp="[A-zÀ-ú ]*",message="Deverá ter apenas Letras e Espaço")
+	@Pattern(regexp="[A-Z0-9 ]*",message="Deverá ter apenas Letras e Espaço")
 	@Column(name="codigo_susep", columnDefinition="char(15)", unique=true)
 	private String codigoSusep;
 	
@@ -347,7 +347,7 @@ public class Proposta {
 	public Proposta(Long id, Date data, String classe, String codigoSusep, BigDecimal valorSegurado,
 			BigDecimal valorFranquia, Date dataInicioVigencia, Date dataTerminoVigencia, int carenciaEmMeses,
 			BigDecimal valorPremio, int diaPagamento, String bancoPagamento, String agencia, String conta,
-			Long version) {
+			Segurado segurado, Veiculo veiculo, Questionario questionario, Set<Tramitacao> tramitacoes, Long version) {
 		super();
 		this.id = id;
 		this.data = data;
@@ -363,7 +363,12 @@ public class Proposta {
 		this.bancoPagamento = bancoPagamento;
 		this.agencia = agencia;
 		this.conta = conta;
+		this.segurado = segurado;
+		this.veiculo = veiculo;
+		this.questionario = questionario;
+		this.tramitacoes = tramitacoes;
 		this.version = version;
 	}
+
 
 }

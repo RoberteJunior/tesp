@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -20,20 +19,17 @@ public class Funcionario extends Pessoa {
 	private Setor setor;
 	
 	@NotBlank
-	@NotNull
-	@Pattern(regexp = "[A-zÀ-ú0-9]*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")
+	@Pattern(regexp = "[A-zÀ-ú0-9]*", message = "Deve permitir apenas caracteres de A à Z maiúsculos ou minusculos e números sem espaços.")
 	@Column(columnDefinition="varchar(30)", nullable=false)
 	private String perfil;
 	
 	@Size(min = 8, max = 15)
 	@NotBlank
-	@NotNull
 	@Pattern(regexp = "[A-z0-9]*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")
 	@Column(columnDefinition="varchar(15)", nullable=false)
 	private String login;
 	
 	@NotBlank
-	@NotNull
 	@Size(max = 100)
 	@Pattern(regexp = "[A-z0-9]*", message = "Não pode ser nulo, vazio ou apenas espaço, o tamanho não deverá exceder 100 caracteres")
 	@Column(columnDefinition="varchar(100)", nullable=false)

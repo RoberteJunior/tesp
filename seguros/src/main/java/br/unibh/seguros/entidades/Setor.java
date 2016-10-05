@@ -32,7 +32,7 @@ public class Setor {
 	
 	@NotBlank
 	@Size(min = 2, max = 10)
-	@Pattern(regexp = "[A-Z]", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços.")
+	@Pattern(regexp = "[A-Z]*", message = "Deve permitir apenas caracteres de A à Z maiúsculos sem espaços.")
 	@Column(columnDefinition="varchar(10)", nullable=false, unique=true)
 	private String sigla;
 	
