@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+
 @Entity
 @Table(name="tb_funcionario")
 public class Funcionario extends Pessoa {
@@ -108,6 +109,7 @@ public class Funcionario extends Pessoa {
 	public Funcionario(){
 		
 	}
+	
 	public Funcionario(Long id, String nome, String sexo, String cpf, String telefoneComercial,
 			String telefoneResidencial, String telefoneCelular, String email, Date dataNascimento, Date dataCadastro,
 			Setor setor, String perfil, String login, String senha) {
