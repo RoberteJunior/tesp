@@ -106,6 +106,7 @@ public class Funcionario extends Pessoa {
 			return false;
 		return true;
 	}
+	
 	public Funcionario(){
 		
 	}
