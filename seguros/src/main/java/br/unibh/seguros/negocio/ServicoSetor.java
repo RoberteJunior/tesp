@@ -62,4 +62,10 @@ public class ServicoSetor implements DAO<Setor, Long> {
 		log.info("Encontrando o " + name);
 		return em.createNamedQuery("Setor.findByNameComFuncionarios").setParameter("nome", name + "%").getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Setor> findByIDComSetorSuperior(Long id) throws Exception {
+		log.info("Encontrando o " + id);
+		return em.createNamedQuery("Setor.findByIDComSetorSuperior").setParameter("id", id).getResultList();
+	}
 }
