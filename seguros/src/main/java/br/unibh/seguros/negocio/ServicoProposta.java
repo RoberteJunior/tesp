@@ -67,4 +67,6 @@ public class ServicoProposta implements DAO<Proposta, Long> {
 		log.info("Encontrando o " + id);
 		return em.createNamedQuery("Proposta.findByIDComPropostaSuperior").setParameter("id", id).getResultList();
 	}
+	
+	
 }
