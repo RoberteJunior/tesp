@@ -1,5 +1,6 @@
 package br.unibh.seguros.entidades;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import java.util.Date;
@@ -22,7 +23,11 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "tb_desconto")
-public class Desconto {
+public class Desconto implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

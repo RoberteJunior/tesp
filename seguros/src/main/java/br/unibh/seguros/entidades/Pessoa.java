@@ -1,5 +1,6 @@
 package br.unibh.seguros.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -23,7 +24,13 @@ import org.hibernate.validator.constraints.br.CPF;
 
 @Entity @Inheritance(strategy=InheritanceType.JOINED)/*@Entity torna a classe persistente*/
 @Table(name="tb_pessoa")
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	public Pessoa (){}
 	

@@ -1,5 +1,6 @@
 package br.unibh.seguros.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -16,8 +17,14 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="tb_segurado")
-public class Segurado extends Pessoa {
+public class Segurado extends Pessoa implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@NotBlank
 	@Pattern(regexp = "[A-Z]*", message = "Classe deve permitir apenas caracteres de A à Z maiúsculos sem espaços e números.")
 	@Column(columnDefinition="char(1)", nullable=false)

@@ -1,5 +1,6 @@
 package br.unibh.seguros.entidades;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -22,10 +23,14 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Table(name = "tb_setor")
 @NamedQueries({ @NamedQuery(name = "Setor.findByName", query = "select o from Setor o where o.nome like :nome"),
-@NamedQuery(name = "Setor.findByNameComFuncionarios", query = "select o from Setor o join fetch o.funcionarios where o.nome like :nome"), 
-@NamedQuery(name = "Setor.findByIDComSetorSuperior", query = "select o from Setor o left join fetch o.setorSuperior where o.id = :id")
-})
-public class Setor {
+		@NamedQuery(name = "Setor.findByNameComFuncionarios", query = "select o from Setor o join fetch o.funcionarios where o.nome like :nome"),
+		@NamedQuery(name = "Setor.findByIDComSetorSuperior", query = "select o from Setor o left join fetch o.setorSuperior where o.id = :id") })
+public class Setor implements Serializable  {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -148,5 +153,7 @@ public class Setor {
 	public String toString() {
 		return "Setor [version=" + version + "]";
 	}
+
+	 
 
 }
