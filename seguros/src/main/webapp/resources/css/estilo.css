@@ -12,7 +12,7 @@ body {
 	border: 1px solid #666666;
 	width: 880px;
 	background: #FFFFFF
-		url(#{request.contextPath}/resources/img/banner_seguro.jpg) norepeat;
+		url(#{request.contextPath}/resources/img/banner_seguro.png) no-repeat;
 	padding-top: 170px;
 }
 
