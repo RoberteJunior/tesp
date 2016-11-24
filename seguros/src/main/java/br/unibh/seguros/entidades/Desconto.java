@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,6 +25,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "tb_desconto")
+@NamedQueries({ @NamedQuery(name = "Desconto.findByClasse", query = "select o from Desconto o where o.classe like :classe")})
 public class Desconto implements Serializable{
 	/**
 	 * 
